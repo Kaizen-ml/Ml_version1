@@ -515,13 +515,18 @@ def process_air_cooling(data_dir: Path) -> tuple[pd.DataFrame, dict]:
     # WHY: shows how aggressively cooling resources are used
     #      for a given IT load.
 
+    # Cooling_Intensity: cooling effort relative to workload
+    # WHY: shows how aggressively cooling resources are used
+    # for a given IT load.
     df["Cooling_Intensity"] = (
     (df["Chiller_Usage"] + df["AHU_Usage"])
     / (df["Server_Workload"] + eps)
-   )
-    
-    print("    + Cooling_Intensity = (Chiller_Usage + AHU_Usage) / Server_Workload")
+    )
 
+    print(
+    "    + Cooling_Intensity = "
+    "(Chiller_Usage + AHU_Usage) / Server_Workload"
+   )
    # Cooling_Power_Load: cooling power under workload
    # WHY: strong proxy for operational energy demand.
 
